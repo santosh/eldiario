@@ -5,12 +5,22 @@ import (
 	"net/http"
 
 	"github.com/globalsign/mgo"
+	"github.com/joho/godotenv"
 	"github.com/santosh/eldiario/handler"
 	"goji.io"
 	"goji.io/pat"
 )
 
-// TODO: Can we replace goji with mux? Which one is better?
+var err error
+
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+}
+
 func main() {
 	session, err := mgo.Dial("localhost")
 	if err != nil {
