@@ -1,0 +1,11 @@
+version: '3'
+services: 
+    web: 
+        build: .
+        ports: 
+            - "8080:8080"
+    mongo:
+        image: "mongo:4.2"
+        container_name: "eldiario_mongo"
+        ports: 
+            - "27017:27017"

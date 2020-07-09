@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/globalsign/mgo"
@@ -22,7 +23,8 @@ func init() {
 }
 
 func main() {
-	session, err := mgo.Dial("localhost")
+	// connection string has to match to the container name in docker-compose
+	session, err := mgo.Dial("eldiario_mongo")
 	if err != nil {
 		panic(err)
 	}
@@ -55,7 +57,6 @@ func ensureIndex(s *mgo.Session) {
 		// TODO: Can we please use mongo's native _id?
 		Key:        []string{"id"},
 		Unique:     true,
-		DropDups:   true,
 		Background: true,
 		Sparse:     true,
 	}

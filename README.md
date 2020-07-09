@@ -6,20 +6,22 @@ which handles API requests. The rest of it is CLI front-end written in Python.
 
 ## Installation
 
-The server application needs a working instance of MongoDB running.
-With Docker, start a new instance of mongo with:
-
-    docker run -d -p 27017-27019:27017-27019 --name mongodb mongo
-
-The client application is written in Python and is uses requests.
-Here you'll be sepending most of the time.
+To run a local instance of eldiario, run `docker-compose up`. This will spin up 
+eldiario server with mongodb dependency.
 
 ## Usage
 
-When you launch eldiario, you are put inside your choice of editor (eldiario reads `$EDITOR`).
+Two frontends are planned for development.
+
+- A web version. Head over to 
+- A command-line version .
+
+Meanwhile API can be used for the further development.
+
+<!-- When you launch eldiario, you are put inside your choice of editor (eldiario reads `$EDITOR`).
 
 You can pass date-time in the format of YYMMDDHHMMSS to override the `--new` timestamp.
-Passing full DateTime helps in sorting.
+Passing full DateTime helps in sorting. -->
 
 <!-- ## Configuration -->
 
