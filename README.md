@@ -1,68 +1,37 @@
 # eldiario
 
+[![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
+
 **eldiario** is a command-line utility to write down notes, in the form of a journal.
 eldiario is based on the client-server model. eldiario's backend is written in go
-which handles API requests. The rest of it is CLI front-end written in Python.
+which handles API requests. A web interface which operates on the API.
 
-## Installation
+<!-- INSERT SCREENSHOT/GIF HERE -->
+
+## Getting Started
+
+### Installation
+
+For local installation and testing, run.
 
 To run a local instance of eldiario, run `docker-compose up`. This will spin up 
 eldiario server with mongodb dependency.
 
-## Usage
+### Usage
 
 Two frontends are planned for development.
 
-- A web version. Head over to 
-- A command-line version .
+- A web version. Head over to <http://127.0.0.1:8080/>
+- A command-line version.
 
-Meanwhile API can be used for the further development.
+<!-- TODO: When you launch eldiario, you are put inside your choice of editor (eldiario reads `$EDITOR`). -->
 
-<!-- When you launch eldiario, you are put inside your choice of editor (eldiario reads `$EDITOR`).
+<!-- Hook it to listing website, something known like awesome-go -->
 
-You can pass date-time in the format of YYMMDDHHMMSS to override the `--new` timestamp.
-Passing full DateTime helps in sorting. -->
+## Contributing
 
-<!-- ## Configuration -->
+While I formulate the text to write here, head over to [CONTRIBUTING.md](https://github.com/santosh/eldiario/blob/master/CONTRIBUTING.md) to get an orientation of the project.
 
-## Development
+## License
 
-With each diary entry, there goes some metadata which are:
-
-- Datetime: This differentiates one entry from another.
-- Author: To show only the entries written by the current user.
-- Body: The actual entry.
-- UUID: Random generated UUID at the front end
-
-### Test API
-
-For testing following curl commands can be used.
-
-Add a new entry:
-
-    curl -X POST -H "Content-Type: application/json" \
-    -d '{"id": "bd7b69fa-9207-4996-91cd-b7eec3fce21b", \
-    "body": "Starting days with eldiario",\
-    "datetime": "20190729224822",\
-    "author": "sntshk"}' http://localhost:8080/entry
-
-Get all entries:
-
-    curl -H "Content-Type: application/json" http://localhost:8080/entry
-
-Get a specific entry:
-
-    curl -H "Content-Type: application/json" \
-    http://localhost:8080/entry/bd7b69fa-9207-4996-91cd-b7eec3fce21b
-
-Update entry:
-
-    curl -X PUT -H "Content-Type: application/json" \
-    -d '{"id": "bd7b69fa-9207-4996-91cd-b7eec3fce21b", body": "eldiario is cool!", \
-    "datetime": "20190729224822", "author": "sntshk"}' \
-    http://localhost:8080/entry/bd7b69fa-9207-4996-91cd-b7eec3fce21b
-
-Delete a entry:
-
-    curl -X DELETE -H "Content-Type: application/json" \
-    http://localhost:8080/entry/bd7b69fa-9207-4996-91cd-b7eec3fce21b
+See [LICENSE](https://github.com/santosh/eldiario/blob/master/LICENSE).
