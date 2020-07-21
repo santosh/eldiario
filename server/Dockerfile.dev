@@ -1,0 +1,9 @@
+# Why are we making Dockerfile.dev if there is Dockerfile already?
+# To run in development environment. Dockerfile is for production use.
+FROM golang:alpine
+
+WORKDIR /go/src/github.com/santosh/eldiario
+COPY . .
+
+EXPOSE 8080
+CMD ["go", "run", "main.go"]

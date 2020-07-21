@@ -1,11 +1,30 @@
 version: '3'
 services: 
-    web: 
-        build: .
+    server: 
+        build: ./server
         ports: 
             - "8080:8080"
+        # remove this while debugging.
+
     mongo:
-        image: "mongo:4.2"
+        image: mongo:4.2
+        # container name is important for connection string
         container_name: "eldiario_mongo"
         ports: 
             - "27017:27017"
+        
+        # environment:
+        #     MONGO_INITDB_ROOT_USERNAME: "$USERNAME"
+        #     MONGO_INITDB_ROOT_PASSWORD: "$PWD"
+        #     MONGO_INITDB_DATABASE: "$DBNAME"
+
+    # client: 
+    #     build: ./client
+    #     ports: 
+    #         - "3000:3000"
+    #     restart: always
+    #       volumes:
+    #         # don't map anything to node_modules dir,
+    #         # because  
+    #         - /app/node_modules
+    #         - ./client:/app

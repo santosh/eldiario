@@ -101,6 +101,7 @@ func GetEntry(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 		var entry model.Entry
 		err := c.Find(bson.M{"id": id}).One(&entry)
 		if err != nil {
+			// TODO: Return some meaningful response with some meaningful status code
 			ErrorWithJSON(w, "Database error", http.StatusInternalServerError)
 			log.Println("Failed to find entry: ", err)
 			return
