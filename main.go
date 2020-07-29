@@ -6,10 +6,9 @@ import (
 	"net/http"
 
 	"github.com/globalsign/mgo"
+	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 	"github.com/santosh/eldiario/handler"
-	"goji.io"
-	"goji.io/pat"
 )
 
 var err error
@@ -33,18 +32,15 @@ func main() {
 	session.SetMode(mgo.Monotonic, true)
 	ensureIndex(session)
 
-	mux := goji.NewMux()
-	mux.HandleFunc(pat.Get("/entry"), handler.GetEntries(session))
-	mux.HandleFunc(pat.Post("/entry"), handler.CreateEntry(session))
-	mux.HandleFunc(pat.Get("/entry/:id"), handler.GetEntry(session))
-	mux.HandleFunc(pat.Put("/entry/:id"), handler.UpdateEntry(session))
-	mux.HandleFunc(pat.Delete("/entry/:id"), handler.DeleteEntry(session))
-
-	// shoud be at last; otherwise other patterns never gonna match
-	mux.Handle(pat.Get("/"), http.StripPrefix("/", http.FileServer(http.Dir("static"))))
+	r := mux.NewRouter()
+	r.HandleFunc("/entry", handler.GetEntries(session))
+	r.HandleFunc("/entry", handler.CreateEntry(session))
+	r.HandleFunc("/entry/:id", handler.GetEntry(session))
+	r.HandleFunc("/entry/:id", handler.UpdateEntry(session))
+	r.HandleFunc("/entry/:id", handler.DeleteEntry(session))
 
 	fmt.Println("Listening at http://127.0.0.1:8080")
-	http.ListenAndServe(":8080", mux)
+	http.ListenAndServe(":8080", r)
 }
 
 func ensureIndex(s *mgo.Session) {

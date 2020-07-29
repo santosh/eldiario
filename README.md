@@ -10,17 +10,17 @@ which handles API requests. A web interface which operates on the API.
 
 <!-- INSERT SCREENSHOT/GIF HERE -->
 
-## Features
+<!-- ## Features
 
 As a development point of view, this project features...
 
-- Unit tests responsible in CI/CD pipeline for deployment.
+- Unit tests responsible in CI/CD pipeline for deployment. -->
 
 ## Getting Started
 
 ### Installation
 
-    go get -u github.com/santosh/eldiario
+    git clone github.com/santosh/eldiario
 
 To run a local version of the server.
 
@@ -36,34 +36,23 @@ If you have done the modification to the code, you can force rebuild of the imag
 
 Two frontends are planned for development.
 
-- A web version. Head over to <http://127.0.0.1:8080/>
-- A command-line version.
+- A web version. <https://github.com/santosh/eldiario-web>
+- A command-line version. <https://github.com/santosh/eldiario-cli>
 
-<!-- TODO: When you launch eldiario, you are put inside your choice of editor (eldiario reads `$EDITOR`). -->
-
-## Architecture
-
-<!-- Document the design here -->
-
-### Endpoints
-
-You want to use the server using APIs and create your own frontends. Like the one we have made [eldiario-cli](https://github.com/santosh/eldiario-cli).
+For now, REST endpoints are the only way to access the API. See <https://github.com/santosh/eldiario/wiki/API-Tests>.
 
 <!-- Hook it to listing website, something known like awesome-go -->
 
 ## Contributing
 
-To get started with the development, fork the repo, look if you can do something with.
-
-### Documentation
-
-Check <> or run godoc server locally.
-
-### Testing
+To get started with the development, head over <https://github.com/santosh/eldiario/issues>, look for something you are familiar with, fork the repo.
 
 While I formulate the text to write here, head over to [CONTRIBUTING.md](https://github.com/santosh/eldiario/blob/master/CONTRIBUTING.md) to get an orientation of the project.
 
-## FAQ
+## TODO
+
+[ ] - Authentication
+[ ] - Autherization for endpoint access
 
 ## Contributors
 
